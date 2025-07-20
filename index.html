@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
   <title>API ASSESSMENT</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h1>USERS LIST TABLE</h1>
+<body class="bg-gray-100 font-sans text-gray-800 p-5">
+  <h1 class="text-center text-3xl font-bold text-gray-900 mb-8">USERS LIST TABLE</h1>
   
-  <div id="users-list"></div>
+  <div id="users-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"></div>
 
   <script>
     async function getusers() {
@@ -23,19 +24,20 @@
 
         users.forEach((user) => {
           const usersCard = document.createElement("div");
+          usersCard.className = "user-card bg-white rounded-lg shadow-md p-6 hover:-translate-y-1 transition-transform duration-200"; // Tailwind classes
           usersCard.innerHTML = `
-            <h2>${user.firstName} ${user.lastName}</h2>
-            <p>Maiden Name: ${user.maidenName}</p>
-            <p>Age: ${user.age}</p>
-            <p>Gender: ${user.gender}</p>
-            <p>Phone: ${user.phone}</p>
-            <p>Email: ${user.email}</p>
-            <p>Username: ${user.username}</p>
-            <p>Password: ${user.password}</p>
-            <p>Birth Date: ${user.birthDate}</p>
-            <p>Hair Color: ${user.hair.color}</p>
-            <p>Hair Type: ${user.hair.type}</p>
-            <img src="${user.image}" width="100" />
+            <h2 class="text-xl font-semibold text-gray-900 mb-2">${user.firstName} ${user.lastName}</h2>
+            <p class="text-gray-600">Maiden Name: ${user.maidenName}</p>
+            <p class="text-gray-600">Age: ${user.age}</p>
+            <p class="text-gray-600">Gender: ${user.gender}</p>
+            <p class="text-gray-600">Phone: ${user.phone}</p>
+            <p class="text-gray-600">Email: ${user.email}</p>
+            <p class="text-gray-600">Username: ${user.username}</p>
+            <p class="text-gray-600">Password: ${user.password}</p>
+            <p class="text-gray-600">Birth Date: ${user.birthDate}</p>
+            <p class="text-gray-600">Hair Color: ${user.hair.color}</p>
+            <p class="text-gray-600">Hair Type: ${user.hair.type}</p>
+            <img src="${user.image}" class="w-24 h-24 rounded-full mx-auto mt-4 object-cover" />
           `;
           usersList.appendChild(usersCard);
         });
@@ -46,7 +48,6 @@
 
     getusers();
   </script>
-
 </body>
 </html>
 
